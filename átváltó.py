@@ -70,13 +70,18 @@ egysegId1-=1
 egysegId2-=1
 
 if egysegId1<egysegId2:
-    print(valtok[tipusId][egysegId1:egysegId2])
+    #print(valtok[tipusId][egysegId1:egysegId2])
     szorzo=1
     for e in valtok[tipusId][egysegId1:egysegId2]:
         szorzo*=e
-
+    eredmeny=szam/szorzo
     
 else:
-    print(valtok[tipusId][egysegId2:egysegId1])
-    for e in valtok[tipusId][egysegId2:egysegId1]):
+    #print(valtok[tipusId][egysegId2:egysegId1])
+    szorzo=1
+    for e in valtok[tipusId][egysegId2:egysegId1]:
         szorzo*=e
+    eredmeny=szam*szorzo
+
+
+print(szam,egysegek[tipusId][egysegId1],eredmeny,egysegek[tipusId][egysegId2])
