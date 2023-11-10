@@ -1,0 +1,12 @@
+											A fuggveny		
+
+egy alprogram ami egy elkulonitett reszen van, van nev es van parameter listaja is ()-zarojelek kozott, 
+lehet ures is-> nincs parametere
+
+adhat vissza erteket: Return kulcsszoval
+
+fuggveny meghivasa: a fuggveny nevevel es parameter listajaval tortenik
+
+pythonban: def kulcsszoval
+
+celszeru a faj elejen az osszes sor elott megcsinalni
