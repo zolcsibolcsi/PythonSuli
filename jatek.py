@@ -63,15 +63,40 @@ tortenet=[
             4,#szál ID
             t.text["Kissé hűvös van, Kelle valami ruha! \nFelveszek egy nadrágot, meg egy pólót!"],#szöveg
             [t.text["fogmosás"],t.text["reggeli"],t.text["öltözés"]],#választási lehetőségek
-            [2,3,4] #Hova ugorjon
+            [5], #Hova ugorjon
         ],
         [
+            5,#szál ID
+            t.text["Ma koncertre megyek, elötte dönteni kéne, hogy itthon vagy egy étteremben eszek."],#szöveg
+            [t.text["otthon"],t.text["étteremben"]],#választási lehetőségek
+            [6,7], #Hova ugorjon
+        ],
+        [
+            6,#szál ID
+            t.text["Itton ettem, most elinduok a koncertre, jegyet az odaúton vagy a helyszínen vegyek?"],#szöveg
+            [t.text["odaúton"],t.text["helyszínen"]],#választási lehetőségek
+            [2,3,4], #Hova ugorjon
+        ],
+        [
+            7,#szál ID
+            t.text["Étteremben ettem, most elinduok a koncertre, jegyet az odaúton vagy a helyszínen vegyek?"],#szöveg
+            [t.text["odaúton"],t.text["helyszínen"]],#választási lehetőségek
+            [2,3,4], #Hova ugorjon
+        ],
+
+
+
+
+
+
+
+        
             66, #szál ID
             "Vége mindennek...",#szoveg
             [],
             []
         ]
-    ]
+
 
         
 szalId=1
