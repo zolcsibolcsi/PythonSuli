@@ -62,16 +62,86 @@ tortenet=[
         [
             4,#szál ID
             t.text["Kissé hűvös van, Kelle valami ruha! \nFelveszek egy nadrágot, meg egy pólót!"],#szöveg
-            [t.text["fogmosás"],t.text["reggeli"],t.text["öltözés"]],#választási lehetőségek
-            [2,3,4] #Hova ugorjon
+            [t.text["koncert"]],#választási lehetőségek
+            [5], #Hova ugorjon
         ],
+        [
+            5,#szál ID
+            t.text["Ma koncertre megyek, elötte dönteni kéne, hogy itthon vagy egy étteremben eszek."],#szöveg
+            [t.text["otthon"],t.text["étteremben"]],#választási lehetőségek
+            [6,7], #Hova ugorjon
+        ],
+        [
+            6,#szál ID
+            t.text["Itthon ettem, most elindulok a koncertre, jegyet az odaúton vagy a helyszínen vegyek?"],#szöveg
+            [t.text["odaúton"],t.text["helyszínen"]],#választási lehetőségek
+            [9,8], #Hova ugorjon
+        ],
+        [
+            7,#szál ID
+            t.text["Étteremben ettem, most elinduok a koncertre, jegyet az odaúton vagy a helyszínen vegyek?"],#szöveg
+            [t.text["odaúton"],t.text["helyszínen"]],#választási lehetőségek
+            [9,8], #Hova ugorjon
+        ],
+        [
+            8,#szál ID
+                t.text["helyszínen veszem a jegyet, beállok a sorba."],#szöveg
+                [t.text["kártyával fizetek"],t.text["készpénzel fizetek"]],#választási lehetőségek
+                [10,10], #Hova ugorjon
+        ],
+        [
+            9,#szál ID
+                t.text["ideúton vettem a jegyet, nem kell sorban állnom."],#szöveg
+                [t.text["iszok valamit"],t.text["megpróbálok minél közelebb jutni a színpadhoz"]],#választási lehetőségek
+                [11,15], #Hova ugorjon
+        ],
+        [
+            10,#szál ID
+                t.text["Fizettem, mit tegyek?"],#szöveg
+                [t.text["iszok valamit"],t.text["megpróbálok minél közelebb jutni a színpadhoz"]],#választási lehetőségek
+                [11], #Hova ugorjon
+        ],
+        [
+            11,#szál ID
+                t.text["Mit igyak?"],#szöveg
+                [t.text["vodka alma"],t.text["jager"],t.text["Cappy"]],#választási lehetőségek
+                [12], #Hova ugorjon
+        ],
+         [
+            12,#szál ID
+                t.text["Koncert után hova menjek?"],#szöveg
+                [t.text["Haza"],t.text["Mekibe"]],#választási lehetőségek
+                [13,14], #Hova ugorjon
+        ],
+        [
+            13,#szál ID
+                t.text["Haza megyek, majd lefekszek aludni"],#szöveg
+                [t.text["Vége"]],#választási lehetőségek
+                [69], #Hova ugorjon
+        ],
+        [
+            14,#szál ID
+                t.text["Elmegyek Mekibe majd utánna haza."],#szöveg
+                [t.text["Vége"]],#választási lehetőségek
+                [66], #Hova ugorjon
+        ],
+        [
+            15,#szál ID
+                t.text["Sikerült ideérnem időben ezert második sorban állok"],#szöveg
+                [t.text["Vége a koncertnek"]],#választási lehetőségek
+                [12], #Hova ugorjon
+        ],
+        
+
+
+
         [
             66, #szál ID
             "Vége mindennek...",#szoveg
             [],
             []
         ]
-    ]
+]
 
         
 szalId=1
