@@ -24,3 +24,6 @@ for _ in range(maxHeight):
 
     rows.append(actRow)
 print("\n".join(rows))
+
+
+#HF legyen tobb fele hopehely
