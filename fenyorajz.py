@@ -22,7 +22,22 @@ def nagyit(pontok,x,y=-1):
         else:
             pontok[i]*=y
 
-    return pontok       
+    return pontok
+       
+def forgatPont(x,y,szog):
+    x2=math.cos(math.radians(szog))*x - math.sin(math.radians(szog))*y
+    y2=math.sin(math.radians(szog))*x - math.cos(math.radians(szog))*y
+
+    return x2,y2
+
+def forgat(lista,szog,oX=0,oY=0):
+
+    lista=eltol(lista,-oX,-oY)
+    
+    for i in range(0, len(lista),2):
+        lista[i],lista[i+1]=forgatPont(lista[i],lista[i+1],szog)
+    
+    return lista
 
 def faSorsol(darab):
     lista=[]
@@ -34,6 +49,7 @@ def faSorsol(darab):
     temp.append(random.randint(20,30)/100)
 
     return lista
+
 
 #ablak létrehozása
 win=Tk()
@@ -72,8 +88,9 @@ fenyo2=[200,0,
         400,100,
         200,0]
 
-fenyo2=eltolas(fenyo2,100,100)
-fenyo2=nagyit(fenyo2,0.5,1)
+fenyo2=eltolas(fenyo2,200,200)
+fenyo2=nagyit(fenyo2,0.1,0.2)
+fenyo2=forgat(fenyo2,10)
 canvas.create_line(fenyo2,width=5,fill="green")
 
 
