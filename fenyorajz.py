@@ -3,7 +3,7 @@ import math
 import random
 
 #eltolás
-def eltolas(pontok,x,y):
+def eltol(pontok,x,y):
     for i in range(0,len(pontok),2):
         pontok[i]+=x
         pontok[i+1]+=y
@@ -39,6 +39,20 @@ def forgat(lista,szog,oX=0,oY=0):
     
     return lista
 
+def kozepSzamol(lista):
+    x=0
+    y=0
+    for i in range(len(lista)):
+        if i%2==0:
+            x+lista[i]
+        else:
+            y+lista[i]
+
+    x=x/(len(lista)/2)
+    y=y/len(lista)*2
+
+    return x,y
+
 def faSorsol(darab):
     lista=[]
 
@@ -69,7 +83,7 @@ canvas.pack(fill = BOTH, expand = 1)
 #canvas.create_line(eltolas(pontok,100,200),width=5,fill="blue")
 
 fenyofa=[200,0,0,400,190,400,190,500,210,500,210,400,400,400,200,0]
-pontok=eltolas(fenyofa,10,10)
+pontok=eltol(fenyofa,10,10)
 canvas.create_line(fenyofa,width=5,fill="green")
 fenyo2=[200,0,
         0,100,
