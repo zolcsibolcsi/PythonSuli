@@ -30,7 +30,13 @@ def forgatPont(x,y,szog):
 
     return x2,y2
 
-def forgat(lista,szog,oX=0,oY=0):
+def forgat(lista,szog,oX="",oY=""):
+
+    kX,kY=kozepSzamol(fenyo2)
+    if oX=="" and oY=="":
+        oX,oY=kozepSzamol(lista)
+    elif oX=="" or oY=="":
+        return lista
 
     lista=eltol(lista,-oX,-oY)
     
@@ -102,11 +108,15 @@ fenyo2=[200,0,
         400,100,
         200,0]
 
-fenyo2=eltolas(fenyo2,200,200)
+fenyo2=eltol(fenyo2,200,200)
 fenyo2=nagyit(fenyo2,0.1,0.2)
 fenyo2=forgat(fenyo2,10)
 canvas.create_line(fenyo2,width=5,fill="green")
 
+kX,kY=kozepSzamol(fenyo2)
+
+fenyo2=forgat(fenyo2,45, kX,kY)
+canvas.create_line(fenyo2,width=2,fill="blue")
 
 
 win.mainloop()
