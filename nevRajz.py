@@ -5,7 +5,7 @@ from tkinter import *
 win=Tk()
 
 #ablak mérete
-win.geometry("600x600")
+win.geometry("1000x1000")
 
 #canvas létrehozás
 canvas=Canvas(win, width=600, height=300)
@@ -13,8 +13,27 @@ canvas.configure(bg="lightgray")
 #canvas akkora amekkora az ablak
 canvas.pack(fill = BOTH, expand = 1)
 
+fenyo2=[200,0,
+        0,100,
+        150,100,
+        0,200,
+        150,200,
+        0,300,
+        150,300,
+        150,400,
+        250,400,
+        250,300,
+        400,300,
+        250,200,
+        400,200,
+        250,100,
+        400,100,
+        200,0]
 
-zoli=[0,0,
+fenyo2Masolat=transzformaciok.eltol(fenyo2,100,100)
+#canvas.create_line(fenyo2Masolat,width=5,fill="green")
+
+zoli=[[0,0,
         200,0,
         100,200,
         200,200,
@@ -22,26 +41,28 @@ zoli=[0,0,
         0,250,
         115,50,
         0,50,
-        0,0
-        ],#Z
+        0,0],
 
-zoli=[x.extend(x[:2]) for x in zoli]
+   [0,0,
+        200,0,
+        100,200,
+        200,200,
+        200,250,
+        0,250,
+        115,50,
+        0,50,
+        0,0]]
 
 zoli2=[]
 for e in zoli:
-    e=transzformaciok.nagyit(e,10)
-    e=transzformaciok.eltol(e,100,100)
-    e=transzformaciok.forgat(e,45)
+        e=transzformaciok.nagyit(e,1)
+        e=transzformaciok.eltol(e, 100, 100)
+        e=transzformaciok.forgat(e, 45)
+        zoli2.append(e)
 
-    zoli2.append(e)
+zoli2=transzformaciok.forgat(zoli2,90)
 
-
+print(zoli2)
 for e in zoli2:
-    canvas.create_line(e,width=2,fill="red")
-
-canvas.create_line(zoli[0],width=5,fill="red")
-fenyo2Masolat=transzformaciok.eltol(zoli,100,100)
-canvas.create_line(zoli,width=5,fill="green")
-
-
+        canvas.create_line(e,width=5,fill="black")
 win.mainloop()
