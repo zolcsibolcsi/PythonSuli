@@ -53,14 +53,14 @@ zoli=[[0,0,
         0,50,
         0,0]]
 
-zoli2=[]
+"""zoli2=[]
 for e in zoli:
-        e=transzformaciok.nagyit(e,1)
+        e=transzformaciok.nagyit(e, 2)
         e=transzformaciok.eltol(e, 100, 100)
-        e=transzformaciok.forgat(e, 45)
+        e=transzformaciok.forgat(e, 90)
         zoli2.append(e)
-
-zoli2=transzformaciok.forgat(zoli2,90)
+"""
+zoli2=transzformaciok.forgat(zoli2,0)
 
 print(zoli2)
 for e in zoli2:
