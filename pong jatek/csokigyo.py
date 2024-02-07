@@ -63,10 +63,29 @@ def rajzol():
                        labdaPos[0]+labdaSize,
                        labdaPos[1]+labdaSize,
                        fill=labdaColor,outline=""))
+    kajaCheck()
+
     if len(labdaLista)>labdaListaHossz:
         canvas.delete(labdaLista[0])
         labdaLista.pop(0)
     win.after(jatekSpeed, rajzol)
+#utkozes
+def kajaCheck():
+    f=canvas.bbox(labdaLista[-1])
+    fKozep=[(f[0]+f[2])/2,(f[1]+f[3])/2,]
+
+    for egyKaja in kajak:
+        k = canvas.bbox(egyKaja)
+        kKozep=[(k[0]+k[2])/2,(k[1]+k[3])/2,]
+
+        x=fKozep[0]-kKozep[0]
+        y=fKozep[1]-kKozep[1]
+
+        #eleri-e ezt a kajat
+        if x**2+y**2 <= ((labdaSize+kajaSize)*0.5)**2:
+            print("hamm!")
+
+
 kajak=[]
 def kaja():
     x=random.randint(0,win.winfo_width()-kajaSize)
@@ -107,16 +126,8 @@ win.bind("<KeyPress>", gombLe)
 win.after(jatekSpeed, rajzol)
 win.after(kajaSpeed,kaja)
 win.mainloop()
-while True:
-    canvas.update()
 
 
 
 
-#utkozes
-    
-    def collisionDetection():
-        sb = playground.bbox(ship)
-        ab = playground.bbox(alien)
-        if ab[0] < sb[2] < ab[2] and ab[1] < sb[1] < ab[3]:
-            playground.move(alien, 50, 50)
+
