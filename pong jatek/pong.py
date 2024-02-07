@@ -5,6 +5,28 @@
 from tkinter import *
 import random
 
+def rajzol():
+    
+    labdaPos[0]+=labdaSpeed[0]
+    labdaPos[1]+=labdaSpeed[1]
+
+    if labdaPos[0]>win.winfo_width() or labdaPos[0]<0:
+        labdaSpeed[0]*=-1
+        #labdaColor=randomColor()
+    if labdaPos[1]>win.winfo_height() or labdaPos[1]<0:
+        labdaSpeed[1]*=-1
+        #labdaColor=randomColor()
+    labdaLista.append(canvas.create_oval(labdaPos[0],
+                       labdaPos[1],
+                       labdaPos[0]+labdaSize,
+                       labdaPos[1]+labdaSize,
+                       fill=labdaColor,outline=""))
+    if len(labdaLista)>labdaListaHossz:
+        canvas.delete(labdaLista[0])
+        labdaLista.pop(0)
+
+    win.after(jatekSpeed,rajzol)
+
 def randomColor():
     r=random.randint(0,255)
     g=random.randint(0,255)
@@ -26,7 +48,7 @@ def atmenetColor(red, green, blue):
 
     pass
 jatekHatter="lightgray"
-
+jatekSpeed=10
 print(randomColor())
 
 win=Tk()
@@ -37,9 +59,9 @@ canvas.pack(fill=BOTH, expand=1)
 
 canvas.create_oval(0,0,100,100,fill="red")
 
-labdaSpeed=[1,1.5]
+labdaSpeed=[5,5.25]
 labdaPos=[200,100]
-labdaSize=50
+labdaSize=20
 
 labdaColor="red"
 
@@ -47,29 +69,15 @@ red,green,blue=0,0,0
 
 
 labdaLista=[]
-labdaListaHossz=100
+labdaListaHossz=1
+
+win.after(jatekSpeed,rajzol)
+win.mainloop()
 
 while True:
-    labdaColor,red,green,blue=atmenetColor(red,green,blue)
-    labdaPos[0]+=labdaSpeed[0]
-    labdaPos[1]+=labdaSpeed[1]
-
-    if labdaPos[0]>win.winfo_width() or labdaPos[0]<0:
-        labdaSpeed[0]*=-1
-        #labdaColor=randomColor()
-    if labdaPos[1]>win.winfo_height() or labdaPos[1]<0:
-        labdaSpeed[1]*=-1
-        #labdaColor=randomColor()
-    labdaLista.append(canvas.create_oval(labdaPos[0],
-                       labdaPos[1],
-                       labdaPos[0]+labdaSize,
-                       labdaPos[1]+labdaSize,
-                       fill=labdaColor,outline=""))
-    if len(labdaLista)>labdaListaHossz:
-        canvas.delete(labdaLista[0])
-        labdaLista.pop(0)
-
+    #labdaColor,red,green,blue=atmenetColor(red,green,blue)
+    #print(labdaColor)
+    rajzol()
     canvas.update()
 
 
-win.mainloop()
