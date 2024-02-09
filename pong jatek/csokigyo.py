@@ -11,6 +11,28 @@ def randomColor():
     b=random.randint(0,255)
     return ("#"+hex(r)[-2:]+hex(g)[-2:]+hex(b)[-2:]).replace("x","0")
 
+
+def utkozes():
+    global halal
+    f=canvas.bbox(labdaLista[-1])
+    fKozep=[(f[0]+f[2])/2,(f[1]+f[3])/2,]
+
+    for egyLabda in labdaLista[:-1]:
+        k = canvas.bbox(egyLabda)
+        kKozep=[(k[0]+k[2])/2,(k[1]+k[3])/2,]
+
+        x=fKozep[0]-kKozep[0]
+        y=fKozep[1]-kKozep[1]
+
+        #eleri-e ezt a kajat
+        if x**2+y**2 <= (labdaSize)**2:
+            print("DIE!")
+            halal=True
+            
+
+
+
+
 def atmenetColor(red, green, blue):
     red+=5
     if red>255:
@@ -49,8 +71,8 @@ def gombLe(e):
 def rajzol():
     #labdaColor,red,green,blue=atmenetColor(red,green,blue)
     #print(labdaColor)
-    labdaPos[0]+=labdaSpeed[0]*labdaSize
-    labdaPos[1]+=labdaSpeed[1]*labdaSize
+    labdaPos[0]+=labdaSpeed[0]*(labdaSize+2)
+    labdaPos[1]+=labdaSpeed[1]*(labdaSize+2)
 
     if labdaPos[0]>win.winfo_width() or labdaPos[0]<0:
         labdaSpeed[0]*=-1
@@ -63,14 +85,21 @@ def rajzol():
                        labdaPos[0]+labdaSize,
                        labdaPos[1]+labdaSize,
                        fill=labdaColor,outline=""))
+    utkozes()
     kajaCheck()
 
     if len(labdaLista)>labdaListaHossz:
         canvas.delete(labdaLista[0])
         labdaLista.pop(0)
-    win.after(jatekSpeed, rajzol)
+
+
+    if not halal:   
+        win.after(jatekSpeed, rajzol)
+
+halal=False        
 #utkozes
 def kajaCheck():
+    global labdaListaHossz
     f=canvas.bbox(labdaLista[-1])
     fKozep=[(f[0]+f[2])/2,(f[1]+f[3])/2,]
 
@@ -84,6 +113,10 @@ def kajaCheck():
         #eleri-e ezt a kajat
         if x**2+y**2 <= ((labdaSize+kajaSize)*0.5)**2:
             print("hamm!")
+            canvas.delete(egyKaja)
+            kajak.remove(egyKaja)
+            #torlendo.append(egyKaja)
+            labdaListaHossz+=1
 
 
 kajak=[]
@@ -106,7 +139,7 @@ canvas.pack(fill=BOTH, expand=1)
 
 #canvas.create_oval(0,0,100,100,fill="red")
 
-jatekSpeed=500
+jatekSpeed=300
 kajaSpeed=5000
 labdaSpeed=[0,0]
 labdaPos=[200,100]
@@ -119,7 +152,7 @@ red,green,blue=0,0,0
 
 
 labdaLista=[]
-labdaListaHossz=1
+labdaListaHossz=2
 
 win.bind("<KeyPress>", gombLe)
 
